@@ -29,8 +29,10 @@ module.exports = (env, argv) => {
 			minimize: isProduction,
 		},
 		resolve: {
+			extensions: [".ts", ".js", ".json"],
 			alias: {
 				"@svg": path.resolve(cwd, "assets/img/svg"),
+				"@ts": path.resolve(cwd, "src/ts"),
 				vue$: path.resolve(
 					cwd,
 					"libs/vuejs/",
@@ -58,6 +60,10 @@ module.exports = (env, argv) => {
 				{
 					test: /\.js$/,
 					loader: "babel-loader",
+				},
+				{
+					test: /\.ts$/,
+					loader: "ts-loader",
 				},
 				{
 					test: /\.s[ac]ss$/i,

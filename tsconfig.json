@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+
+		"noImplicitAny": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noImplicitUseStrict": true,
+
+		"removeComments": true,
+		"sourceMap": false
+	},
+	"exclude": ["node_modules/**/*"]
+}

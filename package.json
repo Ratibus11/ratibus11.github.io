@@ -29,6 +29,7 @@
 	},
 	"homepage": "https://github.com/Ratibus11/ratibus11.github.io#readme",
 	"devDependencies": {
+		"@types/suncalc": "^1.8.1",
 		"babel-loader": "^8.2.5",
 		"css-loader": "^6.7.1",
 		"file-loader": "^6.2.0",
@@ -36,9 +37,13 @@
 		"sass": "^1.52.1",
 		"sass-loader": "^13.0.0",
 		"style-loader": "^3.3.1",
+		"ts-loader": "^9.3.0",
 		"vue": "^3.2.36",
 		"vue-loader": "^17.0.0",
 		"webpack": "^5.72.1",
 		"webpack-cli": "^4.9.2"
+	},
+	"dependencies": {
+		"suncalc": "^1.9.0"
 	}
 }
