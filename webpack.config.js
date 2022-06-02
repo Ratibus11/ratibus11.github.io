@@ -30,13 +30,14 @@ module.exports = (env, argv) => {
 		},
 		resolve: {
 			alias: {
-				vue: path.resolve(
+				"@svg": path.resolve(cwd, "assets/img/svg"),
+				vue$: path.resolve(
 					cwd,
 					"libs/vuejs/",
 					libsVersions.vuejs,
 					"vue.esm-bundler.js"
 				),
-				jquery: path.resolve(
+				jquery$: path.resolve(
 					cwd,
 					"libs/jquery",
 					libsVersions.jquery,
@@ -61,6 +62,20 @@ module.exports = (env, argv) => {
 				{
 					test: /\.s[ac]ss$/i,
 					use: ["style-loader", "css-loader", "sass-loader"],
+				},
+				{
+					test: /\.(svg)$/,
+					use: [
+						{
+							loader: "file-loader",
+							options: {
+								emitFile: false,
+								publicPath: (url, resourcePath, context) => {
+									return path.relative(cwd, resourcePath);
+								},
+							},
+						},
+					],
 				},
 			],
 		},
