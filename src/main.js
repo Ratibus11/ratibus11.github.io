@@ -1,12 +1,13 @@
 import { createApp } from "vue";
-import { get } from "@ts/theme.ts";
+import { get, set } from "@ts/theme.ts";
 
 import App from "./vue/App.vue";
 
 const app = createApp(App);
-app.mount("#app");
 
 get((isLight) => {
+	set(isLight);
 	console.log(isLight ? "C'est clair !" : "Where lumière?");
 	app.config.globalProperties.msg = isLight;
+	app.mount("#app");
 });
