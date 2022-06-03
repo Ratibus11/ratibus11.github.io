@@ -9,7 +9,8 @@
 		"noImplicitUseStrict": true,
 
 		"removeComments": true,
-		"sourceMap": false
+		"sourceMap": false,
+		"jsx": "preserve"
 	},
 	"exclude": ["node_modules/**/*"]
 }

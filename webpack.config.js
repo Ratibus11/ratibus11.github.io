@@ -11,7 +11,7 @@ const webpack = require("webpack");
 const cwd = path.resolve(__dirname);
 const libsVersions = {
 	vuejs: "3.2.36",
-	jquery: "3.6.0",
+	gsap: "3.10.4",
 };
 
 module.exports = (env, argv) => {
@@ -40,11 +40,11 @@ module.exports = (env, argv) => {
 					libsVersions.vuejs,
 					"vue.esm-bundler.js"
 				),
-				jquery$: path.resolve(
+				gsap$: path.resolve(
 					cwd,
-					"libs/jquery",
-					libsVersions.jquery,
-					isProduction ? "jquery.prod.js" : "jquery.dev.js"
+					"libs/gsap",
+					libsVersions.gsap,
+					"gsap.min.js"
 				),
 			},
 		},
@@ -52,11 +52,16 @@ module.exports = (env, argv) => {
 			rules: [
 				{
 					test: /\.vue$/i,
-					loader: "vue-loader",
-					options: {
-						productionMode: isProduction,
-						hotReload: isWatching,
-					},
+					use: [
+						{
+							loader: "vue-loader",
+							options: {
+								productionMode: isProduction,
+								hotReload: isWatching,
+							},
+						},
+						"vue-svg-inline-loader",
+					],
 				},
 				{
 					test: /\.js$/i,
@@ -69,20 +74,6 @@ module.exports = (env, argv) => {
 				{
 					test: /\.s[ac]ss$/i,
 					use: ["style-loader", "css-loader", "sass-loader"],
-				},
-				{
-					test: /\.(svg)$/i,
-					use: [
-						{
-							loader: "file-loader",
-							options: {
-								emitFile: false,
-								publicPath: (url, resourcePath, context) => {
-									return path.relative(cwd, resourcePath);
-								},
-							},
-						},
-					],
 				},
 			],
 		},
