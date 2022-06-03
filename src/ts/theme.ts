@@ -14,6 +14,8 @@ function get(cb: (isLight: boolean) => void): void {
 		cb(true);
 	} else if (localStorageTheme == themes.dark) {
 		cb(false);
+	} else if (window.matchMedia) {
+		cb(window.matchMedia("(prefers-color-scheme: light)").matches);
 	} else {
 		localStorage.removeItem(localStorageKey);
 
@@ -37,11 +39,12 @@ function get(cb: (isLight: boolean) => void): void {
 }
 
 function set(isLight: boolean) {
-	if (isLight) {
-		localStorage[localStorageKey] = "light";
-	} else {
-		localStorage[localStorageKey] = "dark";
-	}
+	const vueApp = document.getElementById("app");
+
+	const newTheme = isLight ? "light" : "dark";
+
+	localStorage[localStorageKey] = newTheme;
+	vueApp.className = newTheme;
 }
 
 export { get, set };
