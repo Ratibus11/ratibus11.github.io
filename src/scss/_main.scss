@@ -1,0 +1,11 @@
+@use "./themes/common" as common;
+@use "./themes/light" as light;
+@use "./themes/dark" as dark;
+
+div#app {
+	@include light.theme;
+
+	&.dark {
+		@include dark.theme;
+	}
+}

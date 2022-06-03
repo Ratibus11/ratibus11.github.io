@@ -1,0 +1,10 @@
+@mixin theme {
+	& {
+		--background-color: #efefef;
+		--color: #000;
+
+		--filter-to-background: brightness(0) saturate(100%) invert(100%)
+			sepia(0%) saturate(250%) hue-rotate(146deg) brightness(113%)
+			contrast(87%);
+	}
+}

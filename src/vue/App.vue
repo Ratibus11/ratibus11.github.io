@@ -1,5 +1,9 @@
+<template><LoadingScreenVue /></template>
+
 <script setup>
-	import * as $ from "jquery";
+	import LoadingScreenVue from "./components/LoadingScreen.vue";
 </script>
 
-<template>Vue app</template>
+<style lang="scss">
+	@import "@scss/main.scss";
+</style>

@@ -29,9 +29,10 @@ module.exports = (env, argv) => {
 			minimize: isProduction,
 		},
 		resolve: {
-			extensions: [".ts", ".js", ".json"],
+			extensions: [".ts", ".js"],
 			alias: {
 				"@svg": path.resolve(cwd, "assets/img/svg"),
+				"@scss": path.resolve(cwd, "src/scss"),
 				"@ts": path.resolve(cwd, "src/ts"),
 				vue$: path.resolve(
 					cwd,
@@ -50,7 +51,7 @@ module.exports = (env, argv) => {
 		module: {
 			rules: [
 				{
-					test: /\.vue$/,
+					test: /\.vue$/i,
 					loader: "vue-loader",
 					options: {
 						productionMode: isProduction,
@@ -58,11 +59,11 @@ module.exports = (env, argv) => {
 					},
 				},
 				{
-					test: /\.js$/,
+					test: /\.js$/i,
 					loader: "babel-loader",
 				},
 				{
-					test: /\.ts$/,
+					test: /\.ts$/i,
 					loader: "ts-loader",
 				},
 				{
@@ -70,7 +71,7 @@ module.exports = (env, argv) => {
 					use: ["style-loader", "css-loader", "sass-loader"],
 				},
 				{
-					test: /\.(svg)$/,
+					test: /\.(svg)$/i,
 					use: [
 						{
 							loader: "file-loader",
