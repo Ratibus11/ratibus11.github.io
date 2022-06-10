@@ -3,6 +3,7 @@
 @use "./themes/dark" as dark;
 
 div#app {
+	@include common.theme;
 	@include light.theme;
 
 	&.dark {

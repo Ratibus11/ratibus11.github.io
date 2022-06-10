@@ -1,1 +1,3 @@
-$selfcolor: #5555ff;
+@mixin theme {
+	--selfColor: #5555ff;
+}
