@@ -11,7 +11,7 @@ const webpack = require("webpack");
 const cwd = path.resolve(__dirname);
 const libsVersions = {
 	vuejs: "3.2.36",
-	gsap: "3.10.4",
+	jquery: "3.6.0",
 };
 
 module.exports = (env, argv) => {
@@ -40,11 +40,11 @@ module.exports = (env, argv) => {
 					libsVersions.vuejs,
 					"vue.esm-bundler.js"
 				),
-				gsap$: path.resolve(
+				jquery$: path.resolve(
 					cwd,
-					"libs/gsap",
-					libsVersions.gsap,
-					"gsap.min.js"
+					"libs/jquery/",
+					libsVersions.jquery,
+					isProduction ? "jquery.dev.js" : "jquery.prod.js"
 				),
 			},
 		},
@@ -84,7 +84,7 @@ module.exports = (env, argv) => {
 			}),
 			new VueLoaderPlugin(),
 			new webpack.DefinePlugin({
-				__VUE_OPTIONS_API__: false,
+				__VUE_OPTIONS_API__: true,
 				__VUE_PROD_DEVTOOLS__: false,
 			}),
 		],
