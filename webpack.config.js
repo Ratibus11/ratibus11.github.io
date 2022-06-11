@@ -34,6 +34,8 @@ module.exports = (env, argv) => {
 				"@svg": path.resolve(cwd, "assets/img/svg"),
 				"@scss": path.resolve(cwd, "src/scss"),
 				"@ts": path.resolve(cwd, "src/ts"),
+				"@vue-pages": path.resolve(cwd, "src/vue/pages"),
+				"@vue-components": path.resolve(cwd, "src/vue/components"),
 				vue$: path.resolve(
 					cwd,
 					"libs/vuejs/",
@@ -81,6 +83,7 @@ module.exports = (env, argv) => {
 			new HtmlWebpackPlugin({
 				title: "Ratibus11 - GitHub Pages",
 				template: path.resolve(cwd, "src/index_template.html"),
+				favicon: path.resolve(cwd, "assets/img/ico/favicon.ico"),
 			}),
 			new VueLoaderPlugin(),
 			new webpack.DefinePlugin({

@@ -4,3 +4,4 @@ node_modules
 # Build files
 app.js
 index.html
+favicon.ico
